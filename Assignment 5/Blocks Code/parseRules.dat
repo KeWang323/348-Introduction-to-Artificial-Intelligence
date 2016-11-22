@@ -1,0 +1,56 @@
+Parse rules have five elements - Name, Pattern, Type, Action, and Value for those actions
+
+A name is a string with no spaces.
+A patterns is a list of words or references to other patterns OR a disjunct of words or  
+    references to other patterns
+A Type is a sentence or a phrase
+The action is the action that the rule invokes
+The Value is the thing that the action is done on 
+
+Name: WhatSentence1
+Pattern: What is <positionPrep> <name>
+Type: Sentence
+Action: Ask
+Value: (<positionPrep> ?x <name>)
+
+Name: WhatSentence2
+Pattern: What is the <attribute> <name>
+Type: Sentence
+Action: Ask
+Value: (<attribute> <name> ?x)
+
+Name: positionPrep
+Pattern: on|under|over|in
+Type: Phrase
+Action: NoOp
+Value: NoOp
+
+Name: name
+Pattern: Block1|Block2
+Type: Phrase
+Action: NoOp
+Value: NoOp
+
+Name: color
+Pattern: color of
+Type: Phrase
+Action: Return
+Value: color
+
+Name: shape
+Pattern: shape of
+Type: Phrase
+Action: Return
+Value: shape
+
+Name: size
+Pattern: size of
+Type: Phrase
+Action: Return
+Value: size
+
+Name: attribute
+Pattern: <color>|<size>|<shape>
+Type: Phrase
+Action: NoOp
+Value: NoOp
