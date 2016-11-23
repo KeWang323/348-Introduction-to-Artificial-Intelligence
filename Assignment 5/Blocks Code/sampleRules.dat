@@ -184,8 +184,93 @@ Pattern: *
 Action: AddBindings
 Value: <variable> self
 
-Name: Put Block1 on the table
+# Assignment 5
+
+Name: What is the <feature> of <object>
+Pattern: What is the <attribute> of <variable>
+Type: Sentence
+Action: Ask
+Value: (<attribute> <variable> ?x)
+
+Name: What is <object>
+Pattern: What is <variable>
+Type: Sentence
+Action: Ask
+Value: (inst <variable> ?x)
+
+Name: What <feature> is <object>
+Pattern: What <attribute> is <variable>
+Type: Sentence
+Action: Ask
+Value: (<attribute> <variable> ?x)
+
+Name: What is <positionPrep> <object>
+Pattern: What is <positionPrep> <variable>
+Type: Sentence
+Action: Ask
+Value: (<positionPrep> ?x <variable>)
+
+Name: What is <comparePrep> than <object>
+Pattern: What is <comparePrep> than <variable>
+Type: Sentence
+Action: Ask
+Value: (<comparePrep> ?x <variable>)
+
+Name: comparePrep
+Pattern: bigger|smaller
+Action: AddBindings
+Value: <comparePrep> self
+
+Name: Where is <object>
+Pattern: Where is <whereClause>
+Type: Sentence
+Action: Ask
+Value:(on <variable> <whereClause>)
+
+Name: whereClause
+Pattern: <variable>
+Action: Augment
+Value: (under <variable> ?whereClauseVariable),(over <variable> ?whereClauseVariable),(in <variable> ?whereClauseVariable)
+
+# motion
+Name: PutOn
 Pattern: Put <name> on the <variable>
 Type: Sentence
 Action: Direct
 Value: (on <name> <variable>)
+
+Name: MoveTo
+Pattern: Move <name> to <variable>
+Type: Sentence
+Action: Direct
+Value: (on <variable> <name>)
+
+Name: PickUp
+Pattern: Pick up the <objectDescription>
+Type: Sentence
+Action: Direct
+Value: (Holding <objectDescription>)
+
+Name: EmptyName
+Pattern: Empty the <name>
+Type: Sentence
+Action: Direct
+Value: (empty <name>)
+
+Name: EmptyType
+Pattern: Empty the <typeDecscription>
+Type: Sentence
+Action: Direct
+Value: (empty <typeDecscription>)
+
+Name: StackOnto
+Pattern: Stack the <objectDescription> onto <variable>
+Type: Sentence
+Action: Direct
+Value: (on <objectDescription> <variable>)
+
+Name: Clear
+Pattern: Clear the <objectDescription>
+Type: Sentence
+Action: Direct
+Value: (Clear <objectDescription>)
